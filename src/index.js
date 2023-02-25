@@ -22,8 +22,8 @@ refs.searchInput.addEventListener(
 
 function onSearchInput(event) {
   searchQuery = event.target.value;
-
-  fetchCountry(searchQuery)
+  if (searchQuery) {
+    fetchCountry(searchQuery)
     .then(countries => {
       refs.countryList.innerHTML = '';
       refs.countryInfo.innerHTML = '';
@@ -48,4 +48,5 @@ function onSearchInput(event) {
     .catch(error => {
       Notiflix.Notify.failure('Oops, there is no country with that name');
     });
+  }
 }
